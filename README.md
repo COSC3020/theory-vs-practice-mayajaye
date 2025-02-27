@@ -2,18 +2,17 @@
 
 - List 3 reasons why asymptotic analysis may be misleading with respect to
   actual performance in practice.
-  1. One algorithm may appear to perform better than another asymptotically,
-     but if the worst case data set for the algorithm with a better average case 
-     ends up being a very common data set for the problem at hand, then you'll
-     want to choose the algorithm that has an asymptotically worse average case,
-     but a less likely and/or less detrimental worst case.
-  2. Some algorithms (like insertion sort) work better than more complicated
-     algorithms (like quicksort) when applied to very small data sets. Terms
-     that are asymptotically insignificant on large data sets can be much more
-     significant on small data sets.
-  3. An algorithm could be asymptotically favorable, but take up so much memory
-     that it would be more efficient to implement another algorithm than try and 
-     implement in place memory.
+  1. Asymptotic analysis only looks at the growth rate of an algorithm based
+     on the amount of work a program is doing. Other factors such as cache
+     handling and memory allocation can affect the runtime of a program.  
+  2. We ignore constant factors when analyzing runtimes, but a constant could 
+     have a dominant growth rate for small n. For example, $10(n)$ would 
+     dominate $n log(n)$ for small data sets, but Big-O notation would ignore 
+     the 10 and have $n log(n)$ be the dominant term since $n log(n)$ will 
+     overtake $10(n)$.
+  3. Runtimes increase predictably on graphs for runtime analysis, but if any
+     of the cases from part 3 occur, the runtime could start fluctuating 
+     unpredictably.                                              
 
 - Suppose finding a particular element in a binary search tree with 1,000
   elements takes 5 seconds. Given what you know about the asymptotic complexity
@@ -32,13 +31,21 @@
 - You measure the time with 10,000 elements and it takes 100 seconds! List 3
   reasons why this could be the case, given that reasoning with the asymptotic
   complexity suggests a different time.
-  1. The tree could be completely unbalanced after the first thousand elements
-     and turn into more of a linked list.
+  1. As the data set grew, the cache hit rate became extremely low. Most of 
+     the data set had cache misses, causing more clock cycles and therefore 
+     a higher runtime.
   2. The elements that were added could be more complex and need more compares
      to be differentiated from each other.                                  
-  3. The storage and CPU on your machine are really bad and can only handle
-     3000 elements before algorithm starts getting really slow.
+  3. Your machine only has 8 MB of RAM, and once that gets fully utilized,
+     the computer will have to read and write to and from the hard drive.
+     Therefore, the program will slow down a lot while approaching 10000 
+     elements.
 
+
+SOURCES AND PLAG
+#### Sources
+
+I looked at this[https://cr.yp.to/bib/1999/lamarca-sorting.pdf] for cache handling affecting runtimes.
 
 "I certify that I have listed all sources used to complete this exercise,
 including the use of any Large Language Models. All of the work is my own, except
