@@ -2,17 +2,24 @@
 
 - List 3 reasons why asymptotic analysis may be misleading with respect to
   actual performance in practice.
-  1. Asymptotic analysis only looks at the growth rate of an algorithm based
-     on the amount of work a program is doing. Other factors such as cache
-     handling and memory allocation can affect the runtime of a program.  
+  1. Asymptotic analysis can be misleading for cases that use parallel
+     computing for higher performance. Synchronization and communication issues
+     are often present in these systems, which can heavily affect the runtime
+     of a program. Asymptotic analysis analyzes the work of an algorithm, but 
+     it cannot predict the issues that come with multiple processors communicating
+     with each other.
   2. We ignore constant factors when analyzing runtimes, but a constant could 
      have a dominant growth rate for small n. For example, $10(n)$ would 
      dominate $n log(n)$ for small data sets, but Big-O notation would ignore 
      the 10 and have $n log(n)$ be the dominant term since $n log(n)$ will 
      overtake $10(n)$.
-  3. Runtimes increase predictably on graphs for runtime analysis, but if any
-     of the cases from part 3 occur, the runtime could start fluctuating 
-     unpredictably.                                              
+  3. Asymptotic analysis uses growth rates to predict the runtime of a certain
+     algorithm by analyzing how much work a program is doing. However, this
+     analysis does not take into account other factors about the data set and/or 
+     hardware that can cause the runtime to fluctuate. Therefore, runtime graphs 
+     based off of asymptotic analysis can be misleading with respect to the 
+     actual runtime in practice by not accounting for lurking variables that can
+     cause the runtime to fluctuate.
 
 - Suppose finding a particular element in a binary search tree with 1,000
   elements takes 5 seconds. Given what you know about the asymptotic complexity
@@ -46,6 +53,7 @@ SOURCES AND PLAG
 #### Sources
 
 I looked at this[https://cr.yp.to/bib/1999/lamarca-sorting.pdf] for cache handling affecting runtimes.
+I looked at this[https://www.geeksforgeeks.org/difference-between-parallel-computing-and-distributed-computing/] for parallel computing.
 
 "I certify that I have listed all sources used to complete this exercise,
 including the use of any Large Language Models. All of the work is my own, except
