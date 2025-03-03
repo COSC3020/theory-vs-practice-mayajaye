@@ -2,12 +2,13 @@
 
 - List 3 reasons why asymptotic analysis may be misleading with respect to
   actual performance in practice.
-  1. Asymptotic analysis can be misleading for cases that use parallel
-     computing for higher performance. Synchronization and communication issues
-     are often present in these systems, which can heavily affect the runtime
-     of a program. Asymptotic analysis analyzes the work of an algorithm, but 
-     it cannot predict the issues that come with multiple processors communicating
-     with each other.
+  1. Algorithms can be asymptotically inferior, but perform very well compared
+     to other algorithms in practice. For example, heap sort and quicksort have 
+     the same best and worst case complexity, but heap sort has a better worst
+     case. This would lead you to assume that heap sort is an overall more
+     consistent algorithm than quicksort. However, quicksort has much better 
+     cache performance and less constant factors in its runtime equation, making
+     it the consistently faster algorithm in practice.
   2. We ignore constant factors when analyzing runtimes, but a constant could 
      have a dominant growth rate for small n. For example, $10(n)$ would 
      dominate $n log(n)$ for small data sets, but Big-O notation would ignore 
@@ -52,8 +53,7 @@
 SOURCES AND PLAG
 #### Sources
 
-I looked at this[https://cr.yp.to/bib/1999/lamarca-sorting.pdf] for cache handling affecting runtimes.
-I looked at this[https://www.geeksforgeeks.org/difference-between-parallel-computing-and-distributed-computing/] for parallel computing.
+I looked at [this](https://cr.yp.to/bib/1999/lamarca-sorting.pdf) for cache handling affecting runtimes.
 
 "I certify that I have listed all sources used to complete this exercise,
 including the use of any Large Language Models. All of the work is my own, except
